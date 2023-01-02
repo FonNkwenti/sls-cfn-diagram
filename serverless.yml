@@ -1,7 +1,7 @@
 service: sls-cfn-diagram
 #app: your-app-name
 
-frameworkVersion: "2"
+frameworkVersion: "3"
 
 provider:
   name: aws
