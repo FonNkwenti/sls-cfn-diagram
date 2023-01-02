@@ -5,7 +5,7 @@ frameworkVersion: "3"
 
 provider:
   name: aws
-  runtime: nodejs18.x
+  runtime: nodejs16.x
   lambdaHashingVersion: 20201221
   region: us-west-1
   environment:
@@ -21,7 +21,7 @@ custom:
 
 functions:
   createTodo:
-    handler: src/handlers/createPost
+    handler: src/handlers/createPost.handler
     timeout: 30
     memorySize: 512
     events:
