@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/FonNkwenti/sls-cfn-diagram/issues"
   },
-  "homepage": "https://github.com/FonNkwenti/sls-cfn-diagram#readme"
+  "homepage": "https://github.com/FonNkwenti/sls-cfn-diagram#readme",
+  "devDependencies": {
+    "aws-sdk": "^2.1286.0",
+    "serverless-iam-roles-per-function": "^3.2.0",
+    "serverless-prune-plugin": "^2.0.1",
+    "serverless-webpack": "^5.11.0"
+  }
 }

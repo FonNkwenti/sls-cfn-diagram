@@ -8,10 +8,8 @@ provider:
   runtime: nodejs18.x
   lambdaHashingVersion: 20201221
   region: us-west-1
-
-functions:
-  hello:
-    handler: src/handler.generateRandomNumber
+  environment:
+    DYNAMODB_TABLE_NAME: ${self.custom.postsTableName}
 
 custom:
   prune:
@@ -19,3 +17,45 @@ custom:
     number: 2
   webpack:
     config: ./webpack.config.js
+  postsTableName: todo-table-${self.provider.stage}
+
+functions:
+  createTodo:
+    handler: src/handlers/createPost
+    timeout: 30
+    memorySize: 512
+    events:
+      - http:
+          path: todos/{id}
+          method: POST
+          cors: true
+    iamRoleStatements:
+      - Effect: "Allow"
+        Action:
+          - "dynamodb:PutItem"
+        Resource: !GetAtt PostsTable.Arn
+
+plugins:
+  - serverless-offline
+  - serverless-iam-roles-per-function
+  - serverless-prune-plugin
+  - serverless-webpack
+
+package:
+  individually: true
+
+resources:
+  Resources:
+    PostsTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:custom.postsTableName}
+        AttributeDefinitions:
+          - AttributeName: postId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: postId
+            KeyType: HASH
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
