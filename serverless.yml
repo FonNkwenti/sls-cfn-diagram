@@ -17,16 +17,16 @@ custom:
     number: 2
   webpack:
     config: ./webpack.config.js
-  postsTableName: todo-table-${self.provider.stage}
+  postsTableName: post-table-${self.provider.stage}
 
 functions:
-  createTodo:
+  createPost:
     handler: src/handlers/createPost.handler
     timeout: 30
     memorySize: 512
     events:
       - http:
-          path: todos/{id}
+          path: post/{id}
           method: POST
           cors: true
     iamRoleStatements:
