@@ -10,7 +10,7 @@ provider:
   region: us-west-1
   stage: dev
   environment:
-    DYNAMODB_TABLE_NAME: ${self.custom.postsTableName}
+    DYNAMODB_TABLE_NAME: ${self:custom.postsTableName}
 
 custom:
   prune:
