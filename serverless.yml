@@ -18,7 +18,7 @@ custom:
     number: 2
   webpack:
     config: ./webpack.config.js
-  postsTableName: post-table-${self.provider.stage}
+  postsTableName: post-table-${self:provider.stage}
 
 functions:
   createPost:
