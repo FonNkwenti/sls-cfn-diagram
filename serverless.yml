@@ -27,7 +27,7 @@ functions:
     memorySize: 512
     events:
       - http:
-          path: post/{id}
+          path: post
           method: POST
           cors: true
     iamRoleStatements:
