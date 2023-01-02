@@ -18,5 +18,5 @@ const createPost = async (TableName, Item) =>
 
 module.exports = {
   createPost,
-  createTable,
+  // createTable,
 };
