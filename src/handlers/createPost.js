@@ -8,7 +8,7 @@ const TableName = process.env.DYNAMODB_TABLE_NAME;
 const handler = async (event) => {
   try {
     const item = JSON.parse(event.body);
-    const postId = randomUUpostId();
+    const postId = randomUUID();
     const now = new Date().toISOString();
     const keySchema = { PK: "postId" };
 
