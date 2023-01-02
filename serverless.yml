@@ -1,0 +1,21 @@
+service: sls-cfn-diagram
+#app: your-app-name
+
+frameworkVersion: "2"
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  lambdaHashingVersion: 20201221
+  region: us-west-1
+
+functions:
+  hello:
+    handler: src/handler.generateRandomNumber
+
+custom:
+  prune:
+    automatic: true
+    number: 2
+  webpack:
+    config: ./webpack.config.js
