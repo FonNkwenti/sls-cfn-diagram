@@ -16,7 +16,7 @@ jobs:
           args: package
       # - uses: actions/setup-node@v3
       - run: |
-          npm ci
+
           npm install -g @mhlabs/cfn-diagram
 
   deploy:
