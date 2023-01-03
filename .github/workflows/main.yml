@@ -18,9 +18,9 @@ jobs:
       - run: |
           npm install -g @mhlabs/cfn-diagram
           npm install draw.io-export
-          cfn-dia draw.io -t /.serverless/cloudformation-template-update-stack.json -c -o diagram.drawio
+          ls -a
           git add -u 
-          git commit -m "[skp ci] commiting cfn diagram"
+          git commit -m "[skip ci] commiting cfn diagram"
           git push
 
   deploy:
