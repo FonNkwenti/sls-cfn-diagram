@@ -12,12 +12,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: serverless/github-action@v3.1
+        # - uses: actions/setup-node@v3
         with:
           args: package
-      # - uses: actions/setup-node@v3
       - run: |
-
           npm install -g @mhlabs/cfn-diagram
+          npm install draw.io-export
+          cfn-dia draw.io -t /.serverless/cloudformation-template-update-stack.json -c -o diagram.drawio
+          git add -u 
+          git commit -m "[skp ci] commiting cfn diagram"
+          git push
 
   deploy:
     name: deploy
