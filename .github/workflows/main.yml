@@ -21,6 +21,7 @@ jobs:
           cfn-dia draw.io -t .serverless/cloudformation-template-update-stack.json -c -o diagram.drawio
           uniqueBucketName="cloudgto-diagram"-"$(uuidgen | tr "[:upper:]" "[:lower:]")"
           ls -a
+          aws s3 mb s3://fon-test-bucket-abcd
           echo $uniqueBucketName
           aws s3 mb s3://$uniqueBucketName
           aws s3 cp diagram.png s3://$uniqueBucketName
