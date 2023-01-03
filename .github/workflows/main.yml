@@ -12,15 +12,17 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: serverless/github-action@v3.1
-        # - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           args: package
       - run: |
           npm install -g @mhlabs/cfn-diagram
           npm install -g draw.io-export
-          ls -a
-          cfn-dia draw.io -t .serverless/cloudformation-template-update-stack.json -c -o diagram.drawio
-          drawio diagram.drawio -o diagram.png
+          cfn-dia draw.io -t .serverless/cloudformation-template-update-stack.json -c -o architecture-diagram.drawio
+          drawio architecture-diagram.drawio -o architecture-diagram.png
+          uniqueBucketName="cloudgto-diagram"-"$(uuidgen)"
+          aws s3 mb s3://$uniqueBucketName
+          aws s3 cp architecture-diagram.png s3://$uniqueBucketName
 
   deploy:
     name: deploy
