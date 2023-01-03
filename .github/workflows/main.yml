@@ -19,8 +19,8 @@ jobs:
           npm install -g @mhlabs/cfn-diagram
           npm install -g draw.io-export
           cfn-dia draw.io -t .serverless/cloudformation-template-update-stack.json -c -o diagram.drawio
-          drawio diagram.drawio -o diagram.png
-          uniqueBucketName="cloudgto-diagram"-"$(uuidgen)"
+
+          uniqueBucketName="cloudgto-diagram"-"$(uuidgen | tr "[:upper:]" "[:lower:]")"
           aws s3 mb s3://$uniqueBucketName
           aws s3 cp diagram.png s3://$uniqueBucketName
 
