@@ -12,10 +12,12 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - uses: serverless/github-action@v3.1
+        with:
+          args: package
       # - uses: actions/setup-node@v3
       - run: |
+          npm ci
           npm install -g @mhlabs/cfn-diagram
-          sls package
 
   deploy:
     name: deploy
