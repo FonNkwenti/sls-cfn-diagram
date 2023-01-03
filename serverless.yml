@@ -37,7 +37,7 @@ functions:
         Resource: !GetAtt PostsTable.Arn
 
 plugins:
-  - serverless-offline
+  # - serverless-offline
   - serverless-iam-roles-per-function
   - serverless-prune-plugin
   - serverless-webpack
