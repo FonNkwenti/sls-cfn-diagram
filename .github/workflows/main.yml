@@ -16,6 +16,8 @@ jobs:
         with:
           args: package
       - run: |
+          sudo apt-get install python3-setuptools
+          python3 -m pip install --user awscli
           npm install -g @mhlabs/cfn-diagram
           npm install -g draw.io-export
           cfn-dia draw.io -t .serverless/cloudformation-template-update-stack.json -c -o diagram.drawio
