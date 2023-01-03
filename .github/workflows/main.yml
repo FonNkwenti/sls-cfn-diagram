@@ -19,6 +19,8 @@ jobs:
           npm install -g @mhlabs/cfn-diagram
           npm install draw.io-export
           ls -a
+          cfn-dia draw.io -t .serverless/cloudformation-template-update-stack.json -c -o diagram.drawio
+          drawio diagram.drawio -o diagram.png
 
   deploy:
     name: deploy
