@@ -19,9 +19,6 @@ jobs:
           npm install -g @mhlabs/cfn-diagram
           npm install draw.io-export
           ls -a
-          git add -u 
-          git commit -m "[skip ci] commiting cfn diagram"
-          git push
 
   deploy:
     name: deploy
