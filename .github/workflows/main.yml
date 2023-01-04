@@ -10,8 +10,8 @@ jobs:
     name: cfnDiagram
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: serverless/github-action@v2
+      - uses: actions/checkout@v3
+      - uses: serverless/github-action@v3.1
         # - uses: actions/setup-node@v3
         with:
           args: package
@@ -21,15 +21,7 @@ jobs:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - run: |
-          npm install -g @mhlabs/cfn-diagram
-          npm install -g draw.io-export
-          cfn-dia draw.io -t .serverless/cloudformation-template-update-stack.json -c -o diagram.drawio
-          uniqueBucketName="cloudgto-diagram"-"$(uuidgen | tr "[:upper:]" "[:lower:]")"
           ls -a
-          aws s3 mb s3://fon-test-bucket-abcd
-          echo $uniqueBucketName
-          aws s3 mb s3://$uniqueBucketName
-          aws s3 cp diagram.png s3://$uniqueBucketName
 
   deploy:
     name: deploy
