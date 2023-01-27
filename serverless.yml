@@ -25,8 +25,8 @@ functions:
     handler: src/handlers/createPost.handler
     timeout: 30
     memorySize: 512
-    layers:
-      - { Ref: drawioDiagram }
+    # layers:
+    #   - { Ref: drawioDiagram }
     events:
       - http:
           path: post
