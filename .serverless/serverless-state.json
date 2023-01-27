@@ -177,7 +177,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/sls-cfn-diagram/dev/1672732058267-2023-01-03T07:47:38.267Z/createPost.zip"
+                "S3Key": "serverless/sls-cfn-diagram/dev/1674828990540-2023-01-27T14:16:30.540Z/createPost.zip"
               },
               "Handler": "src/handlers/createPost.handler",
               "Runtime": "nodejs16.x",
@@ -194,14 +194,19 @@
                   "CreatePostIamRoleLambdaExecution",
                   "Arn"
                 ]
-              }
+              },
+              "Layers": [
+                {
+                  "Ref": "drawioDiagram"
+                }
+              ]
             },
             "DependsOn": [
               "CreatePostIamRoleLambdaExecution",
               "CreatePostLogGroup"
             ]
           },
-          "CreatePostLambdaVersionqPXBwoOWbhnxkDRTjpdDCLK1cu4dSTxV3GhUL4ofFSQ": {
+          "CreatePostLambdaVersionbGZ8Q7gHDpLUtB24tV1xTBSGkmf98PBfaQxs4cthww": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
@@ -329,7 +334,7 @@
               "CreatePostLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1672732052757": {
+          "ApiGatewayDeployment1674828986276": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -495,7 +500,7 @@
           "CreatePostLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "CreatePostLambdaVersionqPXBwoOWbhnxkDRTjpdDCLK1cu4dSTxV3GhUL4ofFSQ"
+              "Ref": "CreatePostLambdaVersionbGZ8Q7gHDpLUtB24tV1xTBSGkmf98PBfaQxs4cthww"
             },
             "Export": {
               "Name": "sls-sls-cfn-diagram-dev-CreatePostLambdaFunctionQualifiedArn"
@@ -624,10 +629,10 @@
       "postsTableName": "post-table-dev"
     },
     "plugins": [
-      "serverless-offline",
       "serverless-iam-roles-per-function",
       "serverless-prune-plugin",
-      "serverless-webpack"
+      "serverless-webpack",
+      "serverless-latest-layer-version"
     ],
     "pluginsData": {},
     "functions": {
@@ -635,6 +640,9 @@
         "handler": "src/handlers/createPost.handler",
         "timeout": 30,
         "memorySize": 512,
+        "layers": {
+          "$ref": "$[\"service\"][\"provider\"][\"compiledCloudFormationTemplate\"][\"Resources\"][\"CreatePostLambdaFunction\"][\"Properties\"][\"Layers\"]"
+        },
         "events": [
           {
             "http": {
@@ -673,7 +681,7 @@
         "memory": 512,
         "runtime": "nodejs16.x",
         "vpc": {},
-        "versionLogicalId": "CreatePostLambdaVersionqPXBwoOWbhnxkDRTjpdDCLK1cu4dSTxV3GhUL4ofFSQ"
+        "versionLogicalId": "CreatePostLambdaVersionbGZ8Q7gHDpLUtB24tV1xTBSGkmf98PBfaQxs4cthww"
       }
     },
     "resources": {
@@ -723,7 +731,7 @@
       "package": {
         "individually": true,
         "artifactsS3KeyDirname": "serverless/sls-cfn-diagram/dev/code-artifacts",
-        "artifactDirectoryName": "serverless/sls-cfn-diagram/dev/1672732058267-2023-01-03T07:47:38.267Z"
+        "artifactDirectoryName": "serverless/sls-cfn-diagram/dev/1674828990540-2023-01-27T14:16:30.540Z"
       },
       "resources": {
         "$ref": "$[\"service\"][\"resources\"]"
@@ -734,7 +742,7 @@
   },
   "package": {
     "individually": true,
-    "artifactDirectoryName": "serverless/sls-cfn-diagram/dev/1672732058267-2023-01-03T07:47:38.267Z",
+    "artifactDirectoryName": "serverless/sls-cfn-diagram/dev/1674828990540-2023-01-27T14:16:30.540Z",
     "artifact": ""
   }
 }

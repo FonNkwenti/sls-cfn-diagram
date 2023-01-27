@@ -43,7 +43,6 @@ plugins:
   - serverless-iam-roles-per-function
   - serverless-prune-plugin
   - serverless-webpack
-  - serverless-latest-layer-version
 
 package:
   individually: true
