@@ -24,7 +24,6 @@ jobs:
           npm install -g draw.io-export
           cfn-dia draw.io -t .serverless/cloudformation-template-update-stack.json -c -o diagram.drawio
           uniqueBucketName="cloudgto-diagram"-"$(uuidgen | tr "[:upper:]" "[:lower:]")"
-          drawio diagram.drawio -o diagram.png
           ls -a
           aws s3 mb s3://fon-test-bucket-abcd
           echo $uniqueBucketName
